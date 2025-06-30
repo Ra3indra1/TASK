@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment class project</title>
+    <script>
+        async function fetchProjects() {
+            const response = await fetch('/projects');
+            const projects = await response.json();
+            document.getElementById('project-list').innerHTML = projects.map(
+                p => `<li>ID: ${p.id}, Name: ${p.name}, Description: ${p.description}</li>`
+            ).join('');
+        }
+    </script>
+</head>
+<body onload="fetchProjects()">
+<h1>Project Management</h1>
+<ul id="project-list"></ul>
+</body>
+</html>
